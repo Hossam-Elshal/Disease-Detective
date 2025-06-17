@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.auth-container {
+  /* background-image: url('../src/assets/images/BG.jpg'); */
+  /* background-image: url('../src/assets/images/BG1.jpeg'); */
+  /* background-image: url('../src/assets/images/BG22.jpg'); */
+  background-image: url('../src/assets/images/BG4.jpg');
+  
+
+  background-position: center center;
+  background-size: cover;
+}
+/* .bg-layout{
+
+} */
