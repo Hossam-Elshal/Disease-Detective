@@ -55,42 +55,41 @@ export default function Navbar() {
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
               <li>
                 <a
-                  href="#"
-                  className="block py-2 px-3 text-primary hover:text-primary/80 rounded-sm md:bg-transparent md:p-0"
+                  href="#header"
+                  className="block py-2 px-3 text-[#0367a1] hover:text-[#0367a1]/80 rounded-sm md:bg-transparent md:p-0"
                 >
                   Home
                 </a>
               </li>
-              <div className="text-primary">Test Color</div>
 
               <li>
                 <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  href="#about"
+                  className="block py-2 px-3 hover:text-[#0367a1]/80 rounded-sm md:bg-transparent md:p-0"
                 >
                   About us
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  href="#services"
+                  className="block py-2 px-3 hover:text-[#0367a1]/80 rounded-sm md:bg-transparent md:p-0"
                 >
                   Services
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  href="#blog"
+                  className="block py-2 px-3 hover:text-[#0367a1]/80 rounded-sm md:bg-transparent md:p-0"
                 >
                   Blog
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  href="#contact"
+                  className="block py-2 px-3 hover:text-[#0367a1]/80 rounded-sm md:bg-transparent md:p-0"
                 >
                   Contact us
                 </a>

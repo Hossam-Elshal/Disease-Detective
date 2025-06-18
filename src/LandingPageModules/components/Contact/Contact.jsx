@@ -16,6 +16,7 @@ export default function Contact() {
   };
 
   return (
+    <section id="contact">
     <div className="bg-white py-12 px-4 md:px-20">
       <h2 className="text-2xl font-bold text-center mb-8">Contact us</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -73,5 +74,6 @@ export default function Contact() {
 </div>
       </div>
     </div>
+    </section>
   );
 }

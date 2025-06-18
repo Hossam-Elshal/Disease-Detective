@@ -4,7 +4,7 @@ import AboutImg from '../../../assets/images/About.svg'
 export default function About() {
   return (
     <>
-      <section style={{backgroundColor: "#F0F9FF"}} className=" py-12 px-4 md:px-16">
+      <section id="about" style={{backgroundColor: "#F0F9FF"}} className=" py-12 px-4 md:px-16">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Image */}
           <div className="md:w-1/2">

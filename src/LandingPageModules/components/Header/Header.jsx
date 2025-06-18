@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <>
       {/* Header Section */}
-      <section className="bg-white pt-28 pb-10 px-4 md:px-16">
+      <section id='header' className="bg-white pt-28 pb-10 px-4 md:px-16">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto">
           {/* Text Content */}
           <div className="md:w-1/2 text-center md:text-left">

@@ -13,3 +13,7 @@
 /* .bg-layout{
 
 } */
+
+html {
+  scroll-behavior: smooth;
+}

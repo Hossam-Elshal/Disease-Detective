@@ -4,7 +4,7 @@ import rightImg from '../../../assets/images/rightImg.svg';
 
 export default function Services() {
   return (
-    <section className="bg-white py-12 px-4 md:px-16">
+    <section id="services" className="bg-white py-12 px-4 md:px-16">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Services</h2>
         <p className="text-gray-700 mb-10 max-w-2xl mx-auto">

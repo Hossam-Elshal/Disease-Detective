@@ -44,7 +44,7 @@ const blogs = [
 
 export default function BlogsSection() {
   return (
-    <section className="bg-blue-50 py-16 px-4">
+    <section id="blog" className="bg-blue-50 py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-2">Blogs & News</h2>
         <p className="text-center text-gray-600 mb-12">
