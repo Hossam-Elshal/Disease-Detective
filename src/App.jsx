@@ -11,6 +11,12 @@ import MasterLayout from "./Shared/MasterLayout/MasterLayout";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Verify from "./AuthModules/components/Verify";
+
+
+
+
+
 
 function App() {
   const routes = createBrowserRouter([
@@ -22,29 +28,21 @@ function App() {
     // Auth
     { path: "login", element: <Login />, errorElement: <NotFound /> },
     { path: "register", element: <Register />, errorElement: <NotFound /> },
-    { path: "verify-account", element: <VerifyAccount />, errorElement: <NotFound /> },
-  ]);
+        { path: "verify", element: <Verify />, errorElement: <NotFound /> },
 
-  //   {
-  //     path: "/",
-  //     element: <AuthLayout />,
-  //     errorElement: <NotFound />,
-  //     children: [
-  //       { index: true, element: <Login /> },
-  //       { path: "login", element: <Login /> },
-  //       { path: "register", element: <Register /> },
-  //     ],
-  //   },
-  //   // Master Layout
-  //   {path: 'home', element: <MasterLayout/>,
-  //     errorElement: <NotFound />,
-  //   },
-  // ]);
+
+
+
+
+    // {path: "verify-account", element: <VerifyAccount />, errorElement: <NotFound />,},
+  ]);
 
   return (
     <>
       <ToastContainer />
       <RouterProvider router={routes}></RouterProvider>
+
+          {/* <Verify/> */}
     </>
   );
 }
