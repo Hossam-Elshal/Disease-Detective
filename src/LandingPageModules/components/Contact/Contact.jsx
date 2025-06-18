@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import contact from "../../../assets/images/Contact.svg"; 
+import contact from "../../../assets/images/contact.png"; 
 
 export default function Contact() {
 
