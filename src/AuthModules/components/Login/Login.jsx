@@ -1,4 +1,4 @@
-import { MdEmail } from "react-icons/md";
+// import { MdEmail } from "react-icons/md";
 import logoImg from "../../../../src/assets/images/logo.png";
 import { Link } from "react-router-dom";
 

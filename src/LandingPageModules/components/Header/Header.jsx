@@ -1,6 +1,6 @@
 // import HeaderImg from '../../../assets/images/HeaderImg.png'
 import { Link } from 'react-router-dom'
-import HeaderImg from '../../../assets/images/HeaderImg.SVG'
+import HeaderImg from '../../../assets/images/HeaderImg.svg'
 
 
 
