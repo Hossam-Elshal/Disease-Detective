@@ -25,7 +25,7 @@ export default function Forget() {
       );
       toast.success("Reset link sent to your email!");
       reset();
-      navigate("/reset-password"); // ✅ توجيه بعد النجاح
+      navigate("/reset-password"); 
     } catch (error) {
       const message =
         error?.response?.data?.message ||
