@@ -13,11 +13,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Verify from "./AuthModules/components/Verify";
 
-
-
-
-
-
 function App() {
   const routes = createBrowserRouter([
     {
@@ -28,13 +23,7 @@ function App() {
     // Auth
     { path: "login", element: <Login />, errorElement: <NotFound /> },
     { path: "register", element: <Register />, errorElement: <NotFound /> },
-        { path: "verify", element: <Verify />, errorElement: <NotFound /> },
-
-
-
-
-
-    // {path: "verify-account", element: <VerifyAccount />, errorElement: <NotFound />,},
+    { path: "verify", element: <Verify />, errorElement: <NotFound /> },
   ]);
 
   return (
@@ -42,7 +31,7 @@ function App() {
       <ToastContainer />
       <RouterProvider router={routes}></RouterProvider>
 
-          {/* <Verify/> */}
+      {/* <Verify/> */}
     </>
   );
 }
