@@ -33,7 +33,7 @@ export default function Register() {
       );
 
       toast.success("Registration successful!");
-      navigate("/login");
+      navigate("/verify");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const message =

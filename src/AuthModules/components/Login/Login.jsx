@@ -22,7 +22,7 @@ export default function Login() {
         "https://upskilling-egypt.com:3003/api/v1/Users/Login",
         data
       );
-      
+
       localStorage.setItem("token", response?.data?.token);
       toast.success("Login success!");
       navigate("/");
@@ -143,7 +143,13 @@ export default function Login() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex justify-end my-3">
+                  <div className="flex justify-between my-3">
+                    <Link
+                      to="/forget-password"
+                      className="no-underline font-bold"
+                    >
+                      Forget Password?
+                    </Link>
                     <Link to="/register" className="no-underline font-bold">
                       Register Now?
                     </Link>

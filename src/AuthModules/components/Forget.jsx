@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logoImg from "../../assets/images/logo.png";
 
-export default function Verify() {
+export default function Forget() {
   const {
     register,
     handleSubmit,
@@ -19,17 +19,17 @@ export default function Verify() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      await axios.put(
-        "https://upskilling-egypt.com:3003/api/v1/Users/verify",
+      await axios.post(
+        "https://upskilling-egypt.com:3003/api/v1/Users/Reset/Request",
         data
       );
-      toast.success("Verification successful!");
+      toast.success("Reset link sent to your email!");
       reset();
-      navigate("/login"); // ✅ Go to login after success
+      navigate("/reset-password"); // ✅ توجيه بعد النجاح
     } catch (error) {
       const message =
         error?.response?.data?.message ||
-        "Verification failed, please try again.";
+        "Failed to send reset link. Please try again.";
       toast.error(message);
     } finally {
       setLoading(false);
@@ -41,16 +41,14 @@ export default function Verify() {
       <div className="container">
         <div className="flex items-center justify-center min-h-screen">
           <div className="w-full md:w-1/2 bg-white rounded-2xl p-6 shadow-lg">
-            <div className="text-center">
-              <img src={logoImg} alt="Logo" className="mx-auto w-28 mb-4" />
-              <div                  className="a7a text-left">
-                <h2 style={{ color: "#494949" }} className="text-3xl font-bold text-gray-800 mb-1">
-                  Verify Account
-                </h2>
-                <p className="text-gray-500">
-                  Enter your email & verification code
-                </p>
-              </div>
+            <div className="text-left">
+              <img src={logoImg} alt="Logo" className="w-28 mb-4 mx-auto" />
+              <h2 className="text-3xl font-bold text-gray-800 mb-1">
+                Forgot Password
+              </h2>
+              <p className="text-gray-500">
+                Enter your email to receive reset instructions.
+              </p>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
@@ -72,26 +70,6 @@ export default function Verify() {
                 <p className="text-red-500 text-sm">{errors.email.message}</p>
               )}
 
-              {/* Verification Code */}
-              <label
-                htmlFor="code"
-                className="block mb-2 text-sm font-medium text-gray-700"
-              >
-                Verification Code
-              </label>
-              <input
-                type="text"
-                id="code"
-                placeholder="Enter your code"
-                {...register("code", {
-                  required: "Verification code is required",
-                })}
-                className="w-full p-2.5 mb-4 border border-gray-300 rounded-lg text-sm"
-              />
-              {errors.code && (
-                <p className="text-red-500 text-sm">{errors.code.message}</p>
-              )}
-
               {/* Submit Button */}
               <div className="text-center">
                 <button
@@ -100,7 +78,7 @@ export default function Verify() {
                   className="w-full py-2.5 px-5 text-white rounded-lg text-sm font-medium"
                   style={{ backgroundColor: "#0367A1" }}
                 >
-                  {loading ? "Verifying..." : "Verify"}
+                  {loading ? "Sending..." : "Send Reset Code"}
                 </button>
               </div>
             </form>
