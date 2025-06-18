@@ -1,18 +1,55 @@
-// import { MdEmail } from "react-icons/md";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 import logoImg from "../../../../src/assets/images/logo.png";
-import { Link } from "react-router-dom";
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "https://upskilling-egypt.com:3003/api/v1/Users/Login",
+        data
+      );
+      
+      localStorage.setItem("token", response?.data?.token);
+      toast.success("Login success!");
+      navigate("/");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message = error.response?.data?.message || "Login Failed!";
+        toast.error(message);
+        console.log("Login Error:", error.response?.data || error.message);
+      } else {
+        toast.error("Unexpected error");
+        console.log("Unexpected Error:", error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="auth-container">
         <div className="container">
-          <div className="flex items-center justify-center min-h-screen  shadow-amber-500">
+          <div className="flex items-center justify-center min-h-screen shadow-amber-500">
             <div className="w-full md:w-1/2 bg-white rounded-2xl p-5">
               <div>
                 {/* Logo */}
                 <div className="text-center">
-                  <img className=" mx-auto" src={logoImg} alt="logo-image" />
+                  <img className="mx-auto" src={logoImg} alt="logo-image" />
                 </div>
 
                 {/* Title */}
@@ -28,10 +65,9 @@ export default function Login() {
                   </p>
                 </div>
 
-                {/* Form ===*/}
-                <form>
-                  {/* Email ============ */}
-
+                {/* Form */}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  {/* Email */}
                   <label
                     htmlFor="input-group-1"
                     className="block mb-2 text-sm font-medium"
@@ -54,15 +90,21 @@ export default function Login() {
                     </div>
                     <input
                       type="text"
-                      id="input-group-1"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                      id="email"
                       placeholder="Enter your email address"
+                      {...register("email", { required: "Email is required" })}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Password ============ */}
+                  {/* Password */}
                   <label
-                    htmlFor="input-group-password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium"
                     style={{ color: "#494949" }}
                   >
@@ -82,29 +124,40 @@ export default function Login() {
                     </div>
                     <input
                       type="password"
-                      id="input-group-password"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                      id="password"
                       placeholder="Enter your password"
+                      {...register("password", {
+                        required: "Password is required",
+                        minLength: {
+                          value: 6,
+                          message: "Password must be at least 6 characters",
+                        },
+                      })}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                     />
+                    {errors.password && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.password.message}
+                      </p>
+                    )}
                   </div>
+
                   {/* Links */}
                   <div className="flex justify-end my-3">
-                    <Link
-                      to="/register"
-                      className="no-underline font-bold"
-                    >
+                    <Link to="/register" className="no-underline font-bold">
                       Register Now?
                     </Link>
                   </div>
 
-                  {/* Login Button */}
-                  <div className=" text-center">
+                  {/* Button */}
+                  <div className="text-center">
                     <button
                       type="submit"
+                      disabled={loading}
                       className="mt-2.5 w-96 text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
                       style={{ backgroundColor: "#0367A1" }}
                     >
-                      Log In
+                      {loading ? "Loading..." : "Log In"}
                     </button>
                   </div>
                 </form>

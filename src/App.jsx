@@ -9,23 +9,21 @@ import Login from "./AuthModules/components/Login/Login";
 import Register from "./AuthModules/components/Register/Register";
 import MasterLayout from "./Shared/MasterLayout/MasterLayout";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const routes = createBrowserRouter([
-
     {
       path: "/",
       element: <MasterLayout />,
       errorElement: <NotFound />,
     },
     // Auth
-    {path: 'login', element: <Login/>,
-      errorElement: <NotFound />,
-    },
-        {path: 'register', element: <Register/>,
-      errorElement: <NotFound />,
-    },
+    { path: "login", element: <Login />, errorElement: <NotFound /> },
+    { path: "register", element: <Register />, errorElement: <NotFound /> },
+    { path: "verify-account", element: <VerifyAccount />, errorElement: <NotFound /> },
   ]);
-
 
   //   {
   //     path: "/",
@@ -45,6 +43,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={routes}></RouterProvider>
     </>
   );
