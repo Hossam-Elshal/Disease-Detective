@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://improved-alien-sharply.ngrok-free.app", // غيرها لو بتستخدم proxy
+  baseURL: import.meta.env.VITE_API_BASE_URL, // ✅ خده من .env بدل ما يبقى ثابت
   headers: {
     "Content-Type": "application/json",
   },

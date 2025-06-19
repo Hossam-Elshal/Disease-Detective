@@ -28,7 +28,7 @@ export default function Register() {
     setLoading(true);
     try {
       await axios.post(
-        "/api/user/register/",
+        "https://improved-alien-sharply.ngrok-free.app/user/register/",
         postData,
         {
           headers: {

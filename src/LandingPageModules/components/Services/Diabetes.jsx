@@ -11,10 +11,9 @@ export default function Diabetes() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("/api/diabetes/predict/", {
+      const response = await fetch("https://improved-alien-sharply.ngrok-free.app/diabetes/predict/", {
         method: "POST",
         headers: {
-          key: "token",
           token: localStorage.getItem("token"), // ✅ dynamic token
           "Content-Type": "application/json",
         },

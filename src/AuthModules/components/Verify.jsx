@@ -20,7 +20,7 @@ export default function Verify() {
     setLoading(true);
     try {
       await axios.post(
-        "/api/user/verify-code/",
+        "https://improved-alien-sharply.ngrok-free.app/user/verify-code/",
         data
       );
       toast.success("Verification successful!");
