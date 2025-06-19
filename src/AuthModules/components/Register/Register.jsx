@@ -15,36 +15,38 @@ export default function Register() {
   } = useForm();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
   const onSubmit = async (data) => {
     const postData = {
-      userName: data.userName,
       email: data.email,
       password: data.password,
-      confirmPassword: data.confirmPassword, // ✅ MUST be sent!
-      country: data.country,
-      phoneNumber: data.phoneNumber,
+      password_confirm: data.password_confirm,
+      first_name: data.first_name,
+      last_name: data.last_name,
     };
 
     setLoading(true);
     try {
       await axios.post(
-        "https://upskilling-egypt.com:3003/api/v1/Users/Register",
-        postData
+        "/api/user/register/",
+        postData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
-      toast.success("Registration successful!");
+      toast.success("Registration successful! Check your email for the verification code.");
       navigate("/verify-password");
     } catch (error) {
       if (axios.isAxiosError(error)) {
+        console.log("Full Error:", error.response?.data || error.message);
         const message =
           error.response?.data?.message ||
-          error.response?.data?.additionalInfo?.errors?.confirmPassword?.[0] ||
+          error.response?.data?.detail ||
           "Registration Failed!";
         toast.error(message);
-        console.log(
-          "Registration Error:",
-          error.response?.data || error.message
-        );
       } else {
         toast.error("Unexpected error");
         console.log("Unexpected Error:", error);
@@ -58,74 +60,60 @@ export default function Register() {
 
   return (
     <div className="auth-container">
-      <div className="container">
+      <div className="container px-4 md:px-0">
         <div className="flex items-center justify-center min-h-screen shadow-amber-500">
-          <div className="w-full md:w-1/2 bg-white rounded-2xl p-5">
+          <div className="w-full max-w-lg md:max-w-2xl bg-white rounded-2xl p-5">
             <div className="text-center">
-              <img className="mx-auto" src={logoImg} alt="logo" />
+              <img className="mx-auto w-28 md:w-36" src={logoImg} alt="logo" />
             </div>
 
-            <div className="my-5">
-              <p
-                className="text-3xl font-semibold"
-                style={{ color: "#494949" }}
-              >
+            <div className="my-5 text-center">
+              <p className="text-2xl md:text-3xl font-semibold" style={{ color: "#494949" }}>
                 Register
               </p>
-              <p className="text-gray-500">Create an account to continue</p>
+              <p className="text-sm md:text-base text-gray-500">Create an account to continue</p>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6">
-                {/* Left Column Inputs */}
+              <div className="grid grid-cols-1 gap-4">
                 <div>
-                  {/* User Name */}
-                  <label
-                    htmlFor="userName"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
-                    User Name
+                  <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-700">
+                    First Name
                   </label>
                   <input
                     type="text"
-                    id="userName"
-                    placeholder="Enter your name"
-                    {...register("userName", { required: "Name is required" })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4"
+                    id="first_name"
+                    placeholder="Enter your first name"
+                    {...register("first_name", { required: "First name is required" })}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 mb-1"
                   />
-                  {errors.userName && (
-                    <p className="text-red-500 text-sm">
-                      {errors.userName.message}
-                    </p>
-                  )}
+                  {errors.first_name && <p className="text-red-500 text-sm mb-2">{errors.first_name.message}</p>}
 
-                  {/* Country */}
-                  <label
-                    htmlFor="country"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
-                    Country
+                  <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-700">
+                    Last Name
                   </label>
                   <input
                     type="text"
-                    id="country"
-                    placeholder="Enter your country"
-                    {...register("country", {
-                      required: "Country is required",
-                    })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4"
+                    id="last_name"
+                    placeholder="Enter your last name"
+                    {...register("last_name", { required: "Last name is required" })}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 mb-1"
                   />
-                  {errors.country && (
-                    <p className="text-red-500 text-sm">
-                      {errors.country.message}
-                    </p>
-                  )}
+                  {errors.last_name && <p className="text-red-500 text-sm mb-2">{errors.last_name.message}</p>}
 
-                  {/* Password */}
-                  <label
-                    htmlFor="password"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    {...register("email", { required: "Email is required" })}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 mb-1"
+                  />
+                  {errors.email && <p className="text-red-500 text-sm mb-2">{errors.email.message}</p>}
+
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">
                     Password
                   </label>
                   <input
@@ -139,105 +127,45 @@ export default function Register() {
                         message: "Password must be at least 6 characters",
                       },
                     })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 mb-1"
                   />
-                  {errors.password && (
-                    <p className="text-red-500 text-sm">
-                      {errors.password.message}
-                    </p>
-                  )}
-                </div>
+                  {errors.password && <p className="text-red-500 text-sm mb-2">{errors.password.message}</p>}
 
-                {/* Right Column Inputs */}
-                <div>
-                  {/* Email */}
-                  <label
-                    htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    {...register("email", { required: "Email is required" })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4"
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm">
-                      {errors.email.message}
-                    </p>
-                  )}
-
-                  {/* Phone Number */}
-                  <label
-                    htmlFor="phoneNumber"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="text"
-                    id="phoneNumber"
-                    placeholder="Enter your phone number"
-                    {...register("phoneNumber", {
-                      required: "Phone number is required",
-                    })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4"
-                  />
-                  {errors.phoneNumber && (
-                    <p className="text-red-500 text-sm">
-                      {errors.phoneNumber.message}
-                    </p>
-                  )}
-
-                  {/* Confirm Password */}
-                  <label
-                    htmlFor="confirmPassword"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
+                  <label htmlFor="password_confirm" className="block mb-2 text-sm font-medium text-gray-700">
                     Confirm Password
                   </label>
                   <input
                     type="password"
-                    id="confirmPassword"
+                    id="password_confirm"
                     placeholder="Confirm your password"
-                    {...register("confirmPassword", {
+                    {...register("password_confirm", {
                       required: "Confirm password is required",
-                      validate: (value) =>
-                        value === password || "Passwords do not match",
+                      validate: (value) => value === password || "Passwords do not match",
                     })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 mb-1"
                   />
-                  {errors.confirmPassword && (
-                    <p className="text-red-500 text-sm">
-                      {errors.confirmPassword.message}
-                    </p>
-                  )}
+                  {errors.password_confirm && <p className="text-red-500 text-sm mb-2">{errors.password_confirm.message}</p>}
                 </div>
               </div>
 
-              {/* Submit Button */}
+              <div className="flex flex-col sm:flex-row justify-between my-4 gap-2">
+                <Link to="/verify-password" className="text-sm font-semibold text-blue-600">
+                  Verify your account?
+                </Link>
+                <Link to="/login" className="text-sm font-semibold text-blue-600">
+                  Already have an account?
+                </Link>
+              </div>
+
               <div className="text-center">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-4 w-96 text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+                  className="mt-4 w-full text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
                   style={{ backgroundColor: "#0367A1" }}
                 >
                   {loading ? "Loading..." : "Register"}
                 </button>
-              </div>
-
-              {/* Link to login */}
-              <div className="flex justify-between my-3">
-                <Link to="/verify-password" className="no-underline font-bold">
-                  Verify your account?
-                </Link>
-                <Link to="/login" className="no-underline font-bold">
-                  Already have an account?
-                </Link>
               </div>
             </form>
           </div>

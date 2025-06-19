@@ -55,7 +55,7 @@ export default function Footer() {
       <div className="mt-10 border-t pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
         {/* Social Icons */}
         <div style={{color:'#0367A1'}} className="flex space-x-4 mb-4 md:mb-0 text-xl">
-          <a href="#"><FaFacebookF /></a>
+          <a href="https://www.facebook.com/profile.php?id=61572294456946"><FaFacebookF /></a>
           <a href="#"><FaInstagram /></a>
           <a href="#"><FaLinkedinIn /></a>
           <a href="#"><FaYoutube /></a>

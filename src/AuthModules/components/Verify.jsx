@@ -19,8 +19,8 @@ export default function Verify() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      await axios.put(
-        "https://upskilling-egypt.com:3003/api/v1/Users/verify",
+      await axios.post(
+        "/api/user/verify-code/",
         data
       );
       toast.success("Verification successful!");

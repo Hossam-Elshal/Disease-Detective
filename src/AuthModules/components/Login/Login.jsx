@@ -19,7 +19,7 @@ export default function Login() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://upskilling-egypt.com:3003/api/v1/Users/Login",
+        "/api/user/login/",
         data
       );
 

@@ -14,6 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Verify from "./AuthModules/components/Verify";
 import Reset from "./AuthModules/components/Reset";
 import Forget from "./AuthModules/components/Forget";
+import Profile from "./Shared/Profile";
+import Diabetes from "./LandingPageModules/components/Services/Diabetes";
 
 function App() {
   const routes = createBrowserRouter([
@@ -36,6 +38,8 @@ function App() {
       errorElement: <NotFound />,
     },
     { path: "reset-password", element: <Reset />, errorElement: <NotFound /> },
+    { path: "profile", element: <Profile />, errorElement: <NotFound /> },
+    { path: "diabetes", element: <Diabetes />, errorElement: <NotFound /> },
   ]);
 
   return (

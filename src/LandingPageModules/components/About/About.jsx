@@ -31,7 +31,7 @@ export default function About() {
               experience that helps you stay in control of your health with
               peace of mind.
             </p>
-            <Link to='' style={{backgroundColor:'#0367A1'}} className=" text-white font-medium py-2 px-6 rounded-md">
+            <Link to='https://www.facebook.com/profile.php?id=61572294456946' style={{backgroundColor:'#0367A1'}} className=" text-white font-medium py-2 px-6 rounded-md">
               Read More
             </Link>
           </div>
