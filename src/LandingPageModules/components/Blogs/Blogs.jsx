@@ -15,7 +15,7 @@ const blogs = [
     description:
       "Diabetes is a chronic medical condition that occurs when the body is unable to regulate blood sugar levels effectively.",
     image: DiabetesImg,
-    link: "#",
+    link: "https://www.sciencedirect.com/science/article/pii/S2666990024000089#:~:text=In%20this%20domain%2C%20Artificial%20Intelligence,care%20and%20outcomes%20%5B8%5D.",
   },
 
   {
@@ -23,21 +23,21 @@ const blogs = [
     description:
       "Skin diseases refer to a wide range of conditions that affect the skin, the body's largest organ.",
     image: skinDiseases,
-    link: "#",
+    link: "https://pubmed.ncbi.nlm.nih.gov/38921305/",
   },
   {
     title: "Eye diseases",
     description:
       "Eye diseases refer to a wide range of conditions that affect the health and function of the eyes.",
     image: eyeImg,
-    link: "#",
+    link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9406878/",
   },
     {
     title: "Heart Disease",
     description:
       "Heart diseases refer to a range of conditions that affect the heart.",
     image: heartImg,
-    link: "#",
+    link: "https://my.clevelandclinic.org/health/diseases/24129-heart-disease",
   },
 
 ];
@@ -78,7 +78,7 @@ export default function BlogsSection() {
                 self-examinations, mammograms, and awareness of symptoms such as
                 lumps, changes in breast shape, or unusual discharge can help
                 identify the disease at an early stage
-                <a href="#" className="text-blue-600 font-semibold ml-1">
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10625863/#:~:text=AI%20in%20supplemental%20breast%20cancer,in%20women%20with%20dense%20breasts." className="text-blue-600 font-semibold ml-1">
                   Read More
                 </a>
               </p>
@@ -110,7 +110,7 @@ export default function BlogsSection() {
 
         {/* Button */}
         <div className="text-center mt-10">
-          <Link to='' style={{backgroundColor:'#0367A1'}} className=" text-white px-6 py-2 rounded hover:bg-blue-800 transition">
+          <Link to='https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=disease+detection+ai&btnG=' style={{backgroundColor:'#0367A1'}} className=" text-white px-6 py-2 rounded hover:bg-blue-800 transition">
             See More Blogs
           </Link>
         </div>
