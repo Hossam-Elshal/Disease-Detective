@@ -41,15 +41,15 @@ export default function Header() {
       <section style={{backgroundColor:"#C0E3FF"}} className=" py-10 px-4 md:px-16">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
-            <h2 className="text-2xl font-bold text-blue-900">15K</h2>
+            <h2 className="text-2xl font-bold text-blue-900">235</h2>
             <p className="text-gray-700">Happy Users</p>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-blue-900">150K</h2>
+            <h2 className="text-2xl font-bold text-blue-900">1097</h2>
             <p className="text-gray-700">Health Assessments Performed</p>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-blue-900">15</h2>
+            <h2 className="text-2xl font-bold text-blue-900">14</h2>
             <p className="text-gray-700">Countries Using Disease Detective</p>
           </div>
           <div>
